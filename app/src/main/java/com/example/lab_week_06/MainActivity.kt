@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_week_06.model.CatBreed
@@ -14,9 +15,12 @@ import com.example.lab_week_06.model.Gender
 import com.example.lab_week_06.model.GlideImageLoader
 
 class MainActivity : AppCompatActivity() {
+    //get ref for recyclerview
     private val recyclerView: RecyclerView by lazy {
         findViewById(R.id.recycler_view)
     }
+
+    //instantiate cat adapter
     private val catAdapter by lazy {
         CatAdapter(
             layoutInflater,
@@ -28,6 +32,8 @@ class MainActivity : AppCompatActivity() {
             }
         )
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +54,11 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,
             false
         )
+
+        //instantiate ItemTouchHelper for the swipe to "delete callback" and
+        //attach it to the recycler view
+        val itemTouchHelper = ItemTouchHelper(catAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         //add data to list
         catAdapter.setData(
@@ -75,8 +86,6 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
-
-
     }
 
     //will create a pop up dialog when recycler item is clicked
