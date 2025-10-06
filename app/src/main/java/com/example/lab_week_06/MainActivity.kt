@@ -83,6 +83,55 @@ class MainActivity : AppCompatActivity() {
                     name = "Curious George",
                     biography ="Award winning investigator",
                     imageUrl = "https://cdn2.thecatapi.com/images/bar.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Female,
+                    breed = CatBreed.BalineseJavanese,
+                    name = "Jack",
+                    biography ="ore no namae wa jack",
+                    imageUrl = "https://cdn2.thecatapi.com/images/car.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Male,
+                    breed = CatBreed.AmericanCurl,
+                    name = "Cat E",
+                    biography ="E (meme)",
+                    imageUrl = "https://cdn2.thecatapi.com/images/eee.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Unknown,
+                    breed = CatBreed.ExoticShorthair,
+                    name = "Cat F",
+                    biography ="Feline",
+                    imageUrl = "https://cdn2.thecatapi.com/images/cat.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Unknown,
+                    breed = CatBreed.AmericanCurl,
+                    name = "Cat G",
+                    biography ="Undercover George",
+                    imageUrl = "https://cdn2.thecatapi.com/images/bar.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Female,
+                    breed = CatBreed.ExoticShorthair,
+                    name = "Cat H",
+                    biography ="Hairy goofball",
+                    imageUrl = "https://cdn2.thecatapi.com/images/3dp.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Unknown,
+                    breed = CatBreed.AmericanCurl,
+                    name = "Cat I",
+                    biography ="Willing to stare into the abyss",
+                    imageUrl = "https://cdn2.thecatapi.com/images/dar.jpg"
+                ),
+                CatModel(
+                    gender = Gender.Male,
+                    breed = CatBreed.BalineseJavanese,
+                    name = "Cat J",
+                    biography ="Laughing villain",
+                    imageUrl = "https://cdn2.thecatapi.com/images/7kr.jpg"
                 )
             )
         )
