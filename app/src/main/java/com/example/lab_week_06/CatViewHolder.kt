@@ -14,9 +14,14 @@ private val FEMALE_SYMBOL = "\u2640"
 private val MALE_SYMBOL = "\u2642"
 private val UNKNOWN_SYMBOL = "?"
 
+
+//onClickListener gained from View->ViewHolder->Adapter->MainActivity.
+//karena MainActivity instantiate Adapter (jadi Main Activity pass OnClickListener ke Adapter lewat instantiation argument)
+//dan seterusnya sampai ViewHolder, baru ViewHolder nge-instantiate view individual.
 class CatViewHolder(
-    containerView: View,
-    private val imageLoader: ImageLoader): RecyclerView.ViewHolder(containerView)
+    private val containerView: View,
+    private val imageLoader: ImageLoader,
+    private val onClickListener: CatAdapter.OnClickListener): RecyclerView.ViewHolder(containerView)
 {
     //containerView is the view/container layout for layout of each item list
 
@@ -40,6 +45,13 @@ class CatViewHolder(
 
     //function is callled in the adapter to provide the binding function
     fun bindData(cat: CatModel) {
+        //override onClickListener
+        containerView.setOnClickListener {
+            //using onClickListener passed from CatAdapter
+            onClickListener.onItemClick(cat)
+        }
+
+        //binding text with cat data
         imageLoader.loadImage(cat.imageUrl,catPhotoView)
         catNameView.text = cat.name
         catBreedView.text = when (cat.breed) {
@@ -55,4 +67,9 @@ class CatViewHolder(
         }
     }
     //binding data is an act of filling in the template with it's supposed data
+
+    //declare interface
+    interface OnClickListener {
+        fun onItemClick(cat: CatModel)
+    }
 }

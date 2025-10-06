@@ -1,5 +1,6 @@
 package com.example.lab_week_06
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,12 @@ class MainActivity : AppCompatActivity() {
     private val catAdapter by lazy {
         CatAdapter(
             layoutInflater,
-            GlideImageLoader(this)
+            GlideImageLoader(this),
+            object:
+                CatAdapter.OnClickListener {
+                //when called, pop up dialog appear
+                override fun onItemClick(cat: CatModel) = showSelectionDialog(cat)
+            }
         )
     }
 
@@ -69,5 +75,17 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
+
+
+    }
+
+    //will create a pop up dialog when recycler item is clicked
+    private fun showSelectionDialog(cat: CatModel) {
+        AlertDialog.Builder(this)
+            .setTitle("Cat Selected")
+            .setMessage("You have selected cat ${cat.name}")
+            .setPositiveButton("OK") {
+                    _, _ ->
+            }.show()
     }
 }
